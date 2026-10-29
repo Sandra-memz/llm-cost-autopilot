@@ -1,0 +1,4 @@
+venv/
+.env
+autopilot.db
+__pycache__/
