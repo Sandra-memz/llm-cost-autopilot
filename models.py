@@ -9,7 +9,7 @@ class ModelConfig:
     tier: str 
 
 MODEL_REGISTRY = [
-    ModelConfig("small-model", "gemini", "gemini-3.5-flash-lite", 0.30, 2.50, "low"),
-    ModelConfig("mid-model", "gemini", "gemini-3.8-flash", 0.75, 3.75, "medium"),
-    ModelConfig("big-model", "gemini", "gemini-3.8-flash", 0.75, 3.75, "high"),
+    ModelConfig("small-model", "gemini", "gemma-4-26b-a4b-it", 0.10, 0.40, "low"),
+    ModelConfig("mid-model", "gemini", "gemma-4-26b-a4b-it", 0.10, 0.40, "medium"),
+    ModelConfig("big-model", "gemini", "gemma-4-31b-it", 0.30, 1.20, "high"),
 ]
