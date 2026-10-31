@@ -10,8 +10,10 @@ def score_complexity(prompt: str) -> str:
         points += 1
 
     # Words that suggest deeper thinking
-    hard_words = ["analyze", "compare", "explain why", "step by step",
-                  "design", "debug", "prove", "optimize", "trade-off"]
+    hard_words = ["analyze", "compare", "explain why", "explain how", "step by step",
+                  "design", "debug", "prove", "optimize", "trade-off",
+                  "discuss", "evaluate", "implications", "limitations",
+                  "critique", "assess", "transform"]
     for word in hard_words:
         if word in text:
             points += 1
