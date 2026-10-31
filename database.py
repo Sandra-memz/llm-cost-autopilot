@@ -31,3 +31,11 @@ def log_request(prompt, complexity, chosen_model, tokens_in, tokens_out, cost, b
     )
     conn.commit()
     conn.close()
+
+def get_stats():
+    conn = sqlite3.connect(DB_FILE)
+    row = conn.execute(
+        "SELECT COUNT(*), COALESCE(SUM(cost), 0), COALESCE(SUM(baseline_cost), 0) FROM requests"
+    ).fetchone()
+    conn.close()
+    return row
