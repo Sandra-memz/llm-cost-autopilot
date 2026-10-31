@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from classifier import score_complexity
 from models import MODEL_REGISTRY
-from database import init_db, log_request
+from database import init_db, log_request, get_stats
 from llm_client import call_model
 
 app = FastAPI()
@@ -36,3 +36,16 @@ def route(request: RouteRequest):
         "baseline_cost": round(baseline_cost, 8),
         "saved": round(baseline_cost - cost, 8),
        }
+
+@app.get("/stats")
+def stats():
+    total, cost, baseline = get_stats()
+    saved = baseline - cost
+    percent = round(saved / baseline * 100, 1) if baseline else 0
+    return {
+        "total_requests": total,
+        "total_cost": round(cost, 8),
+        "baseline_cost": round(baseline, 8),
+        "total_saved": round(saved, 8),
+        "percent_saved": percent,
+    }
